@@ -1,0 +1,11 @@
+<div *ngIf="ShowList">
+  <div class="header-center">
+    <h1 class="display-4">NOW SHOWING</h1>
+  </div>
+  
+  <!-- movie-list-component -->
+  <app-movie-list ></app-movie-list>
+</div>
+
+<!-- movie-seating-component -->
+<app-movie-seating *ngIf="!ShowList"></app-movie-seating>

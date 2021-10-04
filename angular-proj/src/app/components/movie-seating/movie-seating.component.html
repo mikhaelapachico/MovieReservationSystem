@@ -1,0 +1,57 @@
+<div class="movie-seating" style="width: 1000px;"> 
+    <div class="container">
+        <div class="row ">
+          <div class="col-6 col-md-4">
+            <img src="assets/{{MovieImage}}" class="img-thumbnail" style="margin-bottom: 20px;">
+            <h5>{{MovieName}}</h5>
+            <p>{{MovieTime | date:'shortTime'}}</p>
+            <div class="seating-form">
+              <form [formGroup]="BookingForm" role="form">
+                <label>Customer Name</label>
+                <input class="form-control form-control-sm" formControlName="BookingName" type="text" placeholder="Enter Name" aria-label=".form-control-sm example" required>
+              </form>
+            </div>
+            <div class="seating-form">
+                <label>Total Amount</label>
+                <h5>{{TotalAmount}}</h5>
+            </div>
+            <div class="seating-form">
+                <label>Seat Price</label>
+                <h5>{{SeatPrice}}</h5>
+            </div> 
+            <button type="button" class="btn btn-primary" (click)="Cancel()">Close</button>     
+            <button type="button" class="btn btn-primary" (click)="Save()">Save</button> 
+            <button type="button" class="btn btn-primary" (click)="Reset()">Reset</button>             
+          </div>
+          <div class="col-6 col-md-8">
+            <div class="seat-box-container">
+                <div *ngFor="let item of NumberOfSeats;let index = index" class="seat-container">
+                    <div id= "seat-box-{{index+1}}"class="seat-box" style="cursor: pointer;" (click)="SelectSeat($event, index + 1)">{{index + 1}}</div>
+                </div>
+            </div>
+          </div>
+          
+        </div>
+    </div>    
+</div>
+
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white seat-history" style="width: 300px;">
+        <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+          <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+          <span class="fs-5 fw-semibold">History</span>
+        </a>
+        <div class="list-group list-group-flush border-bottom scrollarea">
+          <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true" *ngFor="let item of BookingHistory">
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              <strong class="mb-1">{{item.BookingTimeStamp | date:'medium'}}</strong>
+              <button type="button" class="btn btn-primary" (click)="CancelBooking(item.BookingID)" *ngIf="item.BookingStatus == 1">Cancel</button> 
+            </div>
+            <div class="col-10 mb-1 small">{{item.BookingName}}&nbsp; {{item.BookingSeats.toLocaleString()}}
+              &nbsp; {{item.BookingStatus == 1 ? "Reserved" : "Cancelled"}}
+            </div>
+          </a>
+        </div>
+      </div>
+  
+
+

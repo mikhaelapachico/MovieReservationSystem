@@ -1,0 +1,48 @@
+img {
+    width: 200px;
+    height: 250px;
+    object-fit: contain;
+    border: none;
+    
+}
+
+.movie-seating {
+    padding: 50px 0px 0px 50px;
+    display: inline-block;
+    
+}
+
+.seat-box {
+    width:50px;
+    height:50px;
+    border:1px solid #000; 
+    text-align: center;
+    background-color: gray;
+}
+
+.seat-container{
+    background-color: violet;
+    width: 50px;
+}
+
+.seat-box-container {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    // width: 340px;
+    // margin-left: 300px;
+    // margin-top: 50px;
+    margin: 50px;
+    // float: right;
+    // position: relative;
+    border:none;
+}
+
+.seat-history {
+    float: right;
+    position: relative;
+}
+
+.btn-primary {
+    margin-right: 10px;
+}

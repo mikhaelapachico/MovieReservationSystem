@@ -1,0 +1,96 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="staticBackdropLabel" *ngIf="IsAdding">Add Movie</h5>
+    <h5 class="modal-title" id="staticBackdropLabel" *ngIf="!IsAdding">Edit Movie</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click) = "Close()"></button>
+</div>
+<form [formGroup]="MovieForm" role="form" >
+    <div class="modal-body">
+            <div>
+                <label class="form-label">Title</label>
+                <input type="text" class="form-control" placeholder="Enter Title" formControlName="Title" required>
+            </div>
+            <div style="margin-top: 10px;">
+                <label class="form-label">Upload Image &nbsp; </label>
+                <button for="file" (click) = "clicked()">Choose File</button>
+                {{Image}}
+                <input type="file"
+                       id="fileUploadImage"
+                       (change)="Upload($event)" accept="image/*" style="visibility: hidden; " required>
+            </div>
+            <div *ngIf="IsAdding">
+                <label class="form-label">Seat Price</label>
+                <input type="text" class="form-control" placeholder="Enter Seat Price" formControlName="Price" required>
+            </div>
+            <div *ngIf="IsAdding">
+                <label class="form-label">Schedule 1</label>
+                <div class= "movie-sched">
+                    <div class="col-md-4 movie-time">
+                        <label class="form-label">Time</label>
+                        <input type="time" class="form-control" formControlName="Schedule1Time" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label movie-seat">Number of Seats</label>
+                        <input type="number" class="form-control" placeholder="Enter Number of Seats" min="18" formControlName="Schedule1Seat" required>
+                    </div>
+                </div>
+                
+            </div>
+            <div *ngIf="IsAdding">
+                <label class="form-label">Schedule 2</label>
+                <div class= "movie-sched">
+                    <div class="col-md-4 movie-time">
+                        <label class="form-label">Time</label>
+                        <input type="time" class="form-control"formControlName="Schedule2Time" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label movie-seat">Number of Seats</label>
+                        <input type="number" class="form-control" placeholder="Enter Number of Seats" min="18" formControlName="Schedule2Seat" required>
+                    </div>
+                </div>
+                
+            </div>
+            <div *ngIf="IsAdding">
+                <label class="form-label">Schedule 3</label>
+                <div class= "movie-sched">
+                    <div class="col-md-4 movie-time">
+                        <label class="form-label">Time</label>
+                        <input type="time" class="form-control" formControlName="Schedule3Time" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label movie-seat">Number of Seats</label>
+                        <input type="number" class="form-control" placeholder="Enter Number of Seats" min="18" formControlName="Schedule3Seat" required>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="IsAdding">
+                <label class="form-label">Schedule 4</label>
+                <div class= "movie-sched">
+                    <div class="col-md-4 movie-time">
+                        <label class="form-label">Time</label>
+                        <input type="time" class="form-control" formControlName="Schedule4Time" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label movie-seat">Number of Seats</label>
+                        <input type="number" class="form-control" placeholder="Enter Number of Seats" min="18" formControlName="Schedule4Seat" required>
+                    </div>
+                </div>        
+            </div>
+            <div *ngIf="IsAdding">
+                <label class="form-label">Schedule 5</label>
+                <div class= "movie-sched">
+                    <div class="col-md-4 movie-time">
+                        <label class="form-label">Time</label>
+                        <input type="time" class="form-control" formControlName="Schedule5Time" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label movie-seat">Number of Seats</label>
+                        <input type="number" class="form-control" placeholder="Enter Number of Seats" min="18" formControlName="Schedule5Seat" required>
+                    </div>
+                </div>        
+            </div>
+    </div>
+    <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="Close()">Close</button>
+            <button type="button" class="btn btn-primary" (click)="SaveMovieInfo()">Save</button>
+    </div>
+</form>
